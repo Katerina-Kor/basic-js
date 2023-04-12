@@ -14,6 +14,9 @@ const { NotImplementedError } = require('../extensions/index.js');
 function getSeason(date) {
   if (typeof date == 'undefined') return 'Unable to determine the time of year!'
   if (!(date instanceof Date)) throw new Error('Invalid date!');
+  for (let key in date) {
+    if (key == 'toString') throw new Error('Invalid date!');
+  }
   let month = date.getMonth();
   let season;
 
